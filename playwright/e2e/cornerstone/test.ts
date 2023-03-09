@@ -53,7 +53,7 @@ test.describe("E2E: ", async () => {
     const orderConfirmationMessage =
       await CheckoutPage.orderConfirmation.textContent();
     await expect(orderConfirmationMessage).toContain(
-      `Thankss you ${checkoutName}`
+      `Thank you ${checkoutName}`
     );
   });
 });

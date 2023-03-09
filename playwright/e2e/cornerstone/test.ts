@@ -38,13 +38,22 @@ test.describe("E2E: ", async () => {
     await CartPage.checkoutBtn.click();
 
     //THEN: I generate a random customer email, check privacy policy, and continue.
-    //await page.pause();
     await CheckoutPage.generateRandomEmail();
 
     //AND: I fill in all mandatory input fields and click continue.
     await CheckoutPage.fillMandatoryShippingFields();
+    const checkoutName =
+      await CheckoutPage.form.shippingFirstName.textContent();
 
-    //AND: I add my credit card details
+    //AND: I add my credit card details.
     await CheckoutPage.enterCardDetails();
+
+    //THEN: I should be taken to order confirmation page
+    await page.waitForLoadState("load");
+    const orderConfirmationMessage =
+      await CheckoutPage.orderConfirmation.textContent();
+    await expect(orderConfirmationMessage).toContain(
+      `Thankss you ${checkoutName}`
+    );
   });
 });

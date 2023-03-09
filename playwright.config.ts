@@ -1,4 +1,4 @@
-import { expect, PlaywrightTestConfig } from "@playwright/test";
+import { PlaywrightTestConfig } from "@playwright/test";
 
 const config: PlaywrightTestConfig = {
   fullyParallel: true,
@@ -6,7 +6,7 @@ const config: PlaywrightTestConfig = {
   retries: 1,
   use: {
     trace: "on-first-retry",
-    screenshot: "on",
+    screenshot: "only-on-failure",
     browserName: "chromium",
   },
   projects: [

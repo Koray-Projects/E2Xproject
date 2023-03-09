@@ -25,6 +25,7 @@ export class CheckoutPage extends BasePage {
     cvv: Locator;
     placeOrder: Locator;
   };
+  readonly orderConfirmation: Locator;
 
   /**
    * @description An object that represents the CheckoutPage.
@@ -55,6 +56,7 @@ export class CheckoutPage extends BasePage {
       cvv: page.locator(data.cardDetails.cvv),
       placeOrder: page.locator(data.cardDetails.placeOrder),
     };
+    this.orderConfirmation = page.locator(data.orderConfirmation);
   }
 
   /**
@@ -84,9 +86,9 @@ export class CheckoutPage extends BasePage {
     await this.page.locator(data.form.city).type(city);
     await this.page.locator(data.form.postcode).type(postcode);
     await this.page.locator(data.form.phoneNumber).type(phoneNumber);
-    await this.page.waitForTimeout(5000);
+    await this.page.waitForLoadState("load");
     await this.page
-      .locator("#checkout-shipping-continue")
+      .locator(data.form.shippingContinue)
       .click({ clickCount: 3 });
   }
 

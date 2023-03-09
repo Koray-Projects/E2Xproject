@@ -22,3 +22,5 @@ export const cardDetails = {
   cvv: "#ccCvv",
   placeOrder: "#checkout-payment-continue",
 };
+
+export const orderConfirmation = '[data-test="order-confirmation-heading"]';

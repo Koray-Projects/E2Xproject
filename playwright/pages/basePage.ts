@@ -11,13 +11,8 @@ export class BasePage {
    * @param {string} baseURL The baseURL for the page.
    * @param {string} pathURL The path URL for the page e.g. /basket.
    */
-  constructor(
-    page: Page,
-    pathURL,
-    baseURL = "https://cornerstone-light-demo.mybigcommerce.com/"
-  ) {
+  constructor(page: Page, pathURL) {
     this.page = page;
-    this.baseURL = baseURL;
     this.pathURL = pathURL;
   }
 

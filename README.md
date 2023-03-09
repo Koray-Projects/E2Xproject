@@ -1,6 +1,6 @@
 # Playwright Framework
 
-A playwright framework with e2e testing for cornerstones webpage.
+A playwright framework with a single test, using randomly generated data to complete an e2e checkout.
 
 ## Set up steps
 

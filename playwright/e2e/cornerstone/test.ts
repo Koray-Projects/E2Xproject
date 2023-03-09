@@ -45,10 +45,10 @@ test.describe("E2E: ", async () => {
     const checkoutName =
       await CheckoutPage.form.shippingFirstName.textContent();
 
-    //AND: I add my credit card details.
+    //AND: I add my credit card details and place order.
     await CheckoutPage.enterCardDetails();
 
-    //THEN: I should be taken to order confirmation page
+    //THEN: I should be taken to order confirmation page with a thank you message containing my name.
     await page.waitForLoadState("load");
     const orderConfirmationMessage =
       await CheckoutPage.orderConfirmation.textContent();

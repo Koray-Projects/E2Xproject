@@ -6,7 +6,7 @@ const config: PlaywrightTestConfig = {
   retries: 1,
   use: {
     trace: "on-first-retry",
-    screenshot: "only-on-failure",
+    screenshot: "on",
     browserName: "chromium",
   },
   projects: [

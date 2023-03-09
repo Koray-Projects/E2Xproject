@@ -1,16 +1,16 @@
-# Playwright framework
+# Playwright Framework
 
 A playwright framework with e2e testing for cornerstones webpage.
 
-## Installation
+## Set up steps
 
-Clone the repo:
+Clone the repository:
 
 ```sh
 git clone https://github.com/Koray-Projects/E2Xproject.git
 ```
 
-Install dependencies
+Install dependencies:
 
 ```sh
 npm i
@@ -27,8 +27,6 @@ or
 
 npx playwright test --headed (visible UI)
 ```
-
-This will run test on the playwright UI in headed mode.
 
 ## CI
 

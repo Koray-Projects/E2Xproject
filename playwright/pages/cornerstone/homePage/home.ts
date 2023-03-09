@@ -34,7 +34,10 @@ export class HomePage extends BasePage {
     };
   }
 
-  // Clicks search header option, takes a string parameter option, and presses enter.
+  /**
+   * A function that executes a search for parameter passed.
+   * @param productName enter the name of the product you wish to search
+   */
   async searchOptions(productName: string) {
     await this.clickButton("Search");
     const searchProduct = await this.page.$(

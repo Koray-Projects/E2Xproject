@@ -24,13 +24,17 @@ export class SearchPage extends BasePage {
     };
   }
 
-  // Asserts that the searched product card is visible on page.
+  /**
+   * A function that asserts correct product card is shown using search options.
+   */
   async assertProductCard(product: string) {
     const ProductName = this.page.locator(data.productCard.productName);
     await expect(ProductName).toHaveText(product);
   }
 
-  // Adds product to basket.
+  /**
+   * A function that adds product to basket.
+   */
   async addProductToBasket() {
     await this.page.locator(data.productCard.productAddToBasket).click();
   }

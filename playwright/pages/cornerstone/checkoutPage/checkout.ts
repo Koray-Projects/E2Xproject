@@ -57,9 +57,9 @@ export class CheckoutPage extends BasePage {
     };
   }
 
-  // All Faker Data is generated randomly.
-
-  // Generate a random email, check privacy box, and continue.
+  /**
+   * A function that generates a random email.
+   */
   async generateRandomEmail() {
     const Email = faker.internet.email();
     await this.page.locator(data.form.customerEmail).type(Email);
@@ -67,7 +67,9 @@ export class CheckoutPage extends BasePage {
     await this.page.locator(data.form.continue).click({ force: true });
   }
 
-  // Complete all mandatory input fields fot shipping details.
+  /**
+   * A function that completes all mandatory input fields using randomly generated data.
+   */
   async fillMandatoryShippingFields() {
     const firstName = faker.name.firstName();
     const lastName = faker.name.lastName();
@@ -88,6 +90,9 @@ export class CheckoutPage extends BasePage {
       .click({ clickCount: 3 });
   }
 
+  /**
+   * A function that completes card detail input fields.
+   */
   async enterCardDetails() {
     const cvv = faker.finance.creditCardCVV();
     const fullName = faker.name.fullName();

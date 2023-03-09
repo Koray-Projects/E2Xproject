@@ -36,18 +36,18 @@ export class CheckoutPage extends BasePage {
     super(page, data.url);
 
     this.form = {
-      customerEmail: page.locator(data.form.customerEmail),
-      privacyCheckbox: page.locator(data.form.privacyCheckbox),
-      continue: page.locator(data.form.continue),
-      continueAsGuestBtn: page.locator(data.form.continueAsGuestBtn),
-      shippingFirstName: page.locator(data.form.shippingFirstName),
-      shippingLastName: page.locator(data.form.shippingLastName),
-      addressLine: page.locator(data.form.addressLine),
-      city: page.locator(data.form.city),
-      postcode: page.locator(data.form.postcode),
-      phoneNumber: page.locator(data.form.phoneNumber),
-      shippingContinue: page.locator(data.form.shippingContinue),
-      comment: page.locator(data.form.comment),
+      customerEmail: page.locator(data.checkoutForm.customerEmail),
+      privacyCheckbox: page.locator(data.checkoutForm.privacyCheckbox),
+      continue: page.locator(data.checkoutForm.continue),
+      continueAsGuestBtn: page.locator(data.checkoutForm.continueAsGuestBtn),
+      shippingFirstName: page.locator(data.checkoutForm.shippingFirstName),
+      shippingLastName: page.locator(data.checkoutForm.shippingLastName),
+      addressLine: page.locator(data.checkoutForm.addressLine),
+      city: page.locator(data.checkoutForm.city),
+      postcode: page.locator(data.checkoutForm.postcode),
+      phoneNumber: page.locator(data.checkoutForm.phoneNumber),
+      shippingContinue: page.locator(data.checkoutForm.shippingContinue),
+      comment: page.locator(data.checkoutForm.comment),
     };
     this.cardDetails = {
       cardNumber: page.locator(data.cardDetails.cardNumber),
@@ -64,9 +64,9 @@ export class CheckoutPage extends BasePage {
    */
   async generateRandomEmail() {
     const Email = faker.internet.email();
-    await this.page.locator(data.form.customerEmail).type(Email);
+    await this.page.locator(data.checkoutForm.customerEmail).type(Email);
     await this.page.getByText("Yes, I agree with the privacy policy.").click();
-    await this.page.locator(data.form.continue).click({ force: true });
+    await this.page.locator(data.checkoutForm.continue).click({ force: true });
   }
 
   /**
@@ -80,15 +80,17 @@ export class CheckoutPage extends BasePage {
     const postcode = faker.address.zipCode();
     const phoneNumber = faker.phone.number();
 
-    await this.page.locator(data.form.shippingFirstName).type(firstName);
-    await this.page.locator(data.form.shippingLastName).type(lastName);
-    await this.page.locator(data.form.addressLine).type(address);
-    await this.page.locator(data.form.city).type(city);
-    await this.page.locator(data.form.postcode).type(postcode);
-    await this.page.locator(data.form.phoneNumber).type(phoneNumber);
+    await this.page
+      .locator(data.checkoutForm.shippingFirstName)
+      .type(firstName);
+    await this.page.locator(data.checkoutForm.shippingLastName).type(lastName);
+    await this.page.locator(data.checkoutForm.addressLine).type(address);
+    await this.page.locator(data.checkoutForm.city).type(city);
+    await this.page.locator(data.checkoutForm.postcode).type(postcode);
+    await this.page.locator(data.checkoutForm.phoneNumber).type(phoneNumber);
     await this.page.waitForLoadState("load");
     await this.page
-      .locator(data.form.shippingContinue)
+      .locator(data.checkoutForm.shippingContinue)
       .click({ clickCount: 3 });
   }
 

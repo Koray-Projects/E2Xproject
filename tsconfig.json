@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./playwright",
+    "paths": {
+      "e2e/*": ["e2e/*"],
+      "pages/*": ["pages/*"]
+    },
+    "lib": ["ES6", "DOM"],
+    "target": "ES6",
+    "moduleResolution": "node"
+  }
+}

@@ -1,0 +1,103 @@
+import { Page, Locator } from "@playwright/test";
+import { BasePage } from "../../BasePage";
+import * as data from "./checkout.data";
+import { faker } from "@faker-js/faker";
+
+export class CheckoutPage extends BasePage {
+  readonly form: {
+    customerEmail: Locator;
+    privacyCheckbox: Locator;
+    continue: Locator;
+    continueAsGuestBtn: Locator;
+    shippingFirstName: Locator;
+    shippingLastName: Locator;
+    addressLine: Locator;
+    city: Locator;
+    postcode: Locator;
+    phoneNumber: Locator;
+    shippingContinue: Locator;
+    comment: Locator;
+  };
+  readonly cardDetails: {
+    cardNumber: Locator;
+    cardExpiry: Locator;
+    cardName: Locator;
+    cvv: Locator;
+    placeOrder: Locator;
+  };
+
+  /**
+   * @description An object that represents the CheckoutPage.
+   * @param {Page} page The test page object.
+   */
+
+  constructor(page: Page) {
+    super(page, data.url);
+
+    this.form = {
+      customerEmail: page.locator(data.form.customerEmail),
+      privacyCheckbox: page.locator(data.form.privacyCheckbox),
+      continue: page.locator(data.form.continue),
+      continueAsGuestBtn: page.locator(data.form.continueAsGuestBtn),
+      shippingFirstName: page.locator(data.form.shippingFirstName),
+      shippingLastName: page.locator(data.form.shippingLastName),
+      addressLine: page.locator(data.form.addressLine),
+      city: page.locator(data.form.city),
+      postcode: page.locator(data.form.postcode),
+      phoneNumber: page.locator(data.form.phoneNumber),
+      shippingContinue: page.locator(data.form.shippingContinue),
+      comment: page.locator(data.form.comment),
+    };
+    this.cardDetails = {
+      cardNumber: page.locator(data.cardDetails.cardNumber),
+      cardExpiry: page.locator(data.cardDetails.cardExpiry),
+      cardName: page.locator(data.cardDetails.cardName),
+      cvv: page.locator(data.cardDetails.cvv),
+      placeOrder: page.locator(data.cardDetails.placeOrder),
+    };
+  }
+
+  // All Faker Data is generated randomly.
+
+  // Generate a random email, check privacy box, and continue.
+  async generateRandomEmail() {
+    const Email = faker.internet.email();
+    await this.page.locator(data.form.customerEmail).type(Email);
+    await this.page.getByText("Yes, I agree with the privacy policy.").click();
+    await this.page.locator(data.form.continue).click({ force: true });
+  }
+
+  // Complete all mandatory input fields fot shipping details.
+  async fillMandatoryShippingFields() {
+    const firstName = faker.name.firstName();
+    const lastName = faker.name.lastName();
+    const address = faker.address.streetAddress();
+    const city = faker.address.city();
+    const postcode = faker.address.zipCode();
+    const phoneNumber = faker.phone.number();
+
+    await this.page.locator(data.form.shippingFirstName).type(firstName);
+    await this.page.locator(data.form.shippingLastName).type(lastName);
+    await this.page.locator(data.form.addressLine).type(address);
+    await this.page.locator(data.form.city).type(city);
+    await this.page.locator(data.form.postcode).type(postcode);
+    await this.page.locator(data.form.phoneNumber).type(phoneNumber);
+    await this.page.waitForTimeout(5000);
+    await this.page
+      .locator("#checkout-shipping-continue")
+      .click({ clickCount: 3 });
+  }
+
+  async enterCardDetails() {
+    const cvv = faker.finance.creditCardCVV();
+    const fullName = faker.name.fullName();
+
+    await this.page
+      .locator(data.cardDetails.cardNumber)
+      .type("4111 1111 1111 1111");
+    await this.page.locator(data.cardDetails.cardExpiry).type("05/28");
+    await this.page.locator(data.cardDetails.cvv).type(cvv);
+    await this.page.locator(data.cardDetails.cardName).type(fullName);
+    await this.page.locator(data.cardDetails.placeOrder).click();
+  }
+}

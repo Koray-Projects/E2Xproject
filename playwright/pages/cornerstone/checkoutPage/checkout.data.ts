@@ -1,6 +1,6 @@
 export const url = "/checkout";
 
-export const form = {
+export const checkoutForm = {
   customerEmail: "#email",
   privacyCheckbox: '[name="privacyPolicy"]',
   continue: "#checkout-customer-continue",

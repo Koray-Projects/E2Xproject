@@ -1,24 +1,28 @@
 # Playwright Framework
 
-A playwright framework with a single test, using randomly generated data to complete an e2e checkout.
+<strong>A playwright framework with a single test, using randomly generated data to complete an e2e checkout.</strong>
 
 ## Set up steps
 
-Clone the repository:
+<strong>Clone the repository:</strong>
 
 ```sh
 git clone https://github.com/Koray-Projects/E2Xproject.git
 ```
 
-Install dependencies:
+<strong>Cd to the project folder</strong>
+
+```sh
+cd E2Xproject
+```
+
+<strong>Install dependencies:</strong>
 
 ```sh
 npm i
 ```
 
 ## How to run tests
-
-To run the tests, open a terminal window and enter
 
 ```sh
 npx playwright test

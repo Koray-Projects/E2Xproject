@@ -2,7 +2,7 @@
 
 <strong>A playwright framework with a single test, using randomly generated data to complete an e2e checkout.</strong>
 
-## Set up steps
+## Set up
 
 <strong>Clone the repository:</strong>
 

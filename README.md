@@ -10,7 +10,7 @@
 git clone https://github.com/Koray-Projects/E2Xproject.git
 ```
 
-<strong>Cd to the project folder</strong>
+<strong>cd to the project folder:</strong>
 
 ```sh
 cd E2Xproject

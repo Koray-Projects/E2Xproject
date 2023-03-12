@@ -26,10 +26,6 @@ npm i
 
 ```sh
 npx playwright test
-
-or
-
-npx playwright test --headed (visible UI)
 ```
 
 ## CI

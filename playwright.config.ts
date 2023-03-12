@@ -8,6 +8,7 @@ const config: PlaywrightTestConfig = {
     trace: "on-first-retry",
     screenshot: "only-on-failure",
     browserName: "chromium",
+    headless: false,
   },
   projects: [
     {

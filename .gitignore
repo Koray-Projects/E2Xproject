@@ -1,2 +1,11 @@
 node_modules
 .DS_Store
+
+#Parse data
+output/*
+test-results/*
+allure-results/
+/test-results/
+/playwright-report/
+/playwright/.cache/
+local.playwright.config.ts

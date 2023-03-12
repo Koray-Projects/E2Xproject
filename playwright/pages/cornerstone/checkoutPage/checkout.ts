@@ -101,6 +101,7 @@ export class CheckoutPage extends BasePage {
     const cvv = faker.finance.creditCardCVV();
     const fullName = faker.name.fullName();
 
+    await this.page.waitForLoadState("load");
     await this.page
       .locator(data.cardDetails.cardNumber)
       .type("4111 1111 1111 1111");
